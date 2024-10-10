@@ -5,15 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>📂 Ljubedsa Calderón</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-       <style>
-           .img-custom {
-    max-width: 150px; 
-    max-height: 150px;
-    width: 50%; 
-    object-fit: cover;
-}
-
-       </style>
     </head>
     <body>
         <div class="collapse text-bg-dark" id="navbarHeader">
@@ -85,14 +76,10 @@
                 const consulta = await fetch("https://raw.githubusercontent.com/ljubedsacalderon/dno096-09/refs/heads/main/datos.json");
                 const data = await consulta.json();
                 console.log(data);
+                data.forEach((d, i) => (principal.innerHTML += `<div class="${d.signo} col shadow-sm"><img src="${d.foto}" title="${d.fecha}"class="w-100"><p><a href="single.html?data=${i}" class="link-dark link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">${d.nombre}</a></p>`));
 
-                data.forEach((d, i) => {
-        principal.innerHTML += `
-            <div class="col">
-                <img src="${d.foto}" title="${d.fecha}" class="img-fluid img-custom">
-                <p><a href="single.html?data=${i}" class="link-dark">${d.nombre}</a></p>
-            </div>`;
-    });
+                seleccionables();
+            }
 
             astros().catch((error) => console.error(error));
 
