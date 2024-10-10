@@ -90,12 +90,12 @@
 
             function seleccionables() {
                 seleccion.addEventListener("change", (e) => {
-                    document.querySelectorAll("div").forEach((t) => t.classList.add("esconde"));
+                    document.querySelectorAll(".col").forEach((t) => t.classList.add("d-none"));
                     valor = e.target.value;
                     if (valor !== "todos") {
-                        document.querySelectorAll(`.${valor}`).forEach((t) => t.classList.remove("esconde"));
+                        document.querySelectorAll(`.${valor}`).forEach((t) => t.classList.remove("d-none"));
                     } else {
-                        document.querySelectorAll("div").forEach((t) => t.classList.remove("esconde"));
+                        document.querySelectorAll("div").forEach((t) => t.classList.remove("d-none"));
                     }
                 });
             }
